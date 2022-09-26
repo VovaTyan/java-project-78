@@ -34,13 +34,13 @@ public final class NumberSchema extends BaseSchema {
     }
     public static void checked() {
         if (predicateRequared != null) {
-            MapSchema.setM(predicateRequared);
+            MapSchema.addShapePredicates(predicateRequared);
         }
         if (predicatePozitive != null) {
-            MapSchema.setM(predicatePozitive);
+            MapSchema.addShapePredicates(predicatePozitive);
         }
         if (predicateRange != null) {
-            MapSchema.setM(predicateRange);
+            MapSchema.addShapePredicates(predicateRange);
         }
     }
 }

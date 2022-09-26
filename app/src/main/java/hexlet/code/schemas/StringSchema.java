@@ -23,13 +23,13 @@ public final class StringSchema extends BaseSchema {
     }
     public static void checked() {
         if (predicateRequared != null) {
-            MapSchema.setM(predicateRequared);
+            MapSchema.addShapePredicates(predicateRequared);
         }
         if (predicateContains != null) {
-            MapSchema.setM(predicateContains);
+            MapSchema.addShapePredicates(predicateContains);
         }
         if (predicateminLength != null) {
-            MapSchema.setM(predicateminLength);
+            MapSchema.addShapePredicates(predicateminLength);
         }
     }
 }

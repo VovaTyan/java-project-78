@@ -1,16 +1,18 @@
 package hexlet.code.schemas;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
     private static Predicate predicateRequared;
     private static Predicate predicateSizeof;
-    private static Predicate predicateShape;
+    private static List<Predicate> shapePredicates = new ArrayList<>();
 
-    public static void setM(Predicate predicate) {
-        MapSchema.predicateShape = predicate;
+    public static void addShapePredicates(Predicate predicate) {
+        MapSchema.shapePredicates.add(predicate);
     }
 
     public void shape(Map<String, BaseSchema> schemas) {
@@ -26,6 +28,7 @@ public final class MapSchema extends BaseSchema {
         });
     }
     boolean isValid(BaseSchema schema, Object value) {
+        shapePredicates.clear();
         try {
             schema.getClass().getDeclaredMethod("checked").invoke(null);
         } catch (NoSuchMethodException e) {
@@ -35,8 +38,10 @@ public final class MapSchema extends BaseSchema {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        if (!predicateShape.test(value)) {
-            return false;
+        for (Predicate predicate : shapePredicates) {
+            if (!predicate.test(value)) {
+                return false;
+            }
         }
         return true;
     }
@@ -47,13 +52,5 @@ public final class MapSchema extends BaseSchema {
     public void sizeof(int amountChar) {
         predicateSizeof = n -> ((Map<?, ?>) n).size() == amountChar;
         addPredicates(predicateSizeof);
-    }
-    public static void checked() {
-        if (predicateRequared != null) {
-            MapSchema.setM(predicateRequared);
-        }
-        if (predicateSizeof != null) {
-            MapSchema.setM(predicateSizeof);
-        }
     }
 }
