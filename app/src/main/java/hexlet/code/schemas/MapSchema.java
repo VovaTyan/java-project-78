@@ -10,6 +10,11 @@ public final class MapSchema extends BaseSchema {
     private static Predicate predicateRequared;
     private static Predicate predicateSizeof;
     private static List<Predicate> shapePredicates = new ArrayList<>();
+    private static String nameBaseSvhema;
+
+    public static String getNameBaseSvhema() {
+        return nameBaseSvhema;
+    }
 
     public static void addShapePredicates(Predicate predicate) {
         MapSchema.shapePredicates.add(predicate);
@@ -19,8 +24,10 @@ public final class MapSchema extends BaseSchema {
         addPredicates(n -> {
             for (Map.Entry<String, BaseSchema> schema: schemas.entrySet()) {
                 for (Map.Entry<String, Object> data : ((Map<String, Object>) n).entrySet()) {
-                    if (schema.getKey().equals(data.getKey()) && !isValid(schema.getValue(), data.getValue())) {
-                        return false;
+                    if (schema.getKey().equals(data.getKey())) {
+                        if (!isValid(schema.getValue(), data.getValue())) {
+                            return false;
+                        }
                     }
                 }
             }
@@ -29,21 +36,17 @@ public final class MapSchema extends BaseSchema {
     }
     boolean isValid(BaseSchema schema, Object value) {
         shapePredicates.clear();
+        nameBaseSvhema = schema.toString();
         try {
             schema.getClass().getDeclaredMethod("checked").invoke(null);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+        boolean result = true;
         for (Predicate predicate : shapePredicates) {
-            if (!predicate.test(value)) {
-                return false;
-            }
+            result = result && predicate.test(value);
         }
-        return true;
+        return result;
     }
     public void required() {
         predicateRequared = n -> n instanceof Map<?, ?>;

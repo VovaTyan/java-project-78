@@ -21,7 +21,7 @@ public class ValidatorTest {
     private static final Integer NUMBERS_100 = 100;
 
     @Test
-    public void testStringSchema() {
+    public void testStringValidator() {
         Validator v = new Validator();
         StringSchema schema = v.string();
 
@@ -49,7 +49,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testNumberSchema() {
+    public void testNumberValidator() {
         Validator v = new Validator();
         NumberSchema schema = v.number();
 
