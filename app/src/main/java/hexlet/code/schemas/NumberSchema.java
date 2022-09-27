@@ -2,11 +2,11 @@ package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema {
     public NumberSchema required() {
-        addPredicates("requaredNumberSchema", n -> n instanceof Integer);
+        addPredicates(n -> n instanceof Integer);
         return this;
     }
     public NumberSchema positive() {
-        addPredicates("positiveNumberSchema", n -> {
+        addPredicates(n -> {
             if (n == null) {
                 return true;
             } else {
@@ -20,7 +20,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
     public NumberSchema range(Integer min, Integer max) {
-        addPredicates("rangeNumberSchema", n -> (Integer) n >= min && (Integer) n <= max);
+        addPredicates(n -> (Integer) n >= min && (Integer) n <= max);
         return this;
     }
 }
