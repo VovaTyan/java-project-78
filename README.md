@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/VovaTyan/java-project-78/workflows/hexlet-check/badge.svg)](https://github.com/VovaTyan/java-project-78/ac
+[![Actions Status](https://github.com/VovaTyan/java-project-78/workflows/hexlet-check/badge.svg)](https://github.com/VovaTyan/java-project-78/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/75d0898d7a977e745c96/maintainability)](https://codeclimate.com/github/VovaTyan/java-project-78/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/75d0898d7a977e745c96/test_coverage)](https://codeclimate.com/github/VovaTyan/java-project-78/test_coverage)
 ## *Валидатор данных в полях объекта по устанавливаемым фильтрам* ##
