@@ -24,10 +24,8 @@ public final class MapSchema extends BaseSchema {
         addPredicates(n -> {
             for (Map.Entry<String, BaseSchema> schema: schemas.entrySet()) {
                 for (Map.Entry<String, Object> data : ((Map<String, Object>) n).entrySet()) {
-                    if (schema.getKey().equals(data.getKey())) {
-                        if (!isValid(schema.getValue(), data.getValue())) {
-                            return false;
-                        }
+                    if (schema.getKey().equals(data.getKey()) && !isValid(schema.getValue(), data.getValue())) {
+                        return false;
                     }
                 }
             }

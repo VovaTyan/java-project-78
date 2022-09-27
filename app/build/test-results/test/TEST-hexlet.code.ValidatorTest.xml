@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hexlet.code.ValidatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-09-26T18:57:13" hostname="vova-Sony" time="0.35">
+<testsuite name="hexlet.code.ValidatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-09-27T05:49:37" hostname="vova-Sony" time="0.379">
   <properties/>
-  <testcase name="testStringValidator()" classname="hexlet.code.ValidatorTest" time="0.33"/>
-  <testcase name="testMapValidator()" classname="hexlet.code.ValidatorTest" time="0.01"/>
-  <testcase name="testNumberValidator()" classname="hexlet.code.ValidatorTest" time="0.006"/>
+  <testcase name="testStringValidator()" classname="hexlet.code.ValidatorTest" time="0.36"/>
+  <testcase name="testMapValidator()" classname="hexlet.code.ValidatorTest" time="0.011"/>
+  <testcase name="testNumberValidator()" classname="hexlet.code.ValidatorTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
