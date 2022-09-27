@@ -1,18 +1,17 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
-    private List<Predicate> predicates = new ArrayList<>();
-
-    public final void addPredicates(Predicate predicate) {
-        predicates.add(predicate);
+    private Map<String, Predicate> predicates = new HashMap<>();
+    public final void addPredicates(String nameSchema, Predicate predicate) {
+        predicates.put(nameSchema, predicate);
     }
     public final boolean isValid(Object data) {
-        for (Predicate predicate : predicates) {
-            if (!predicate.test(data)) {
+        for (Map.Entry<String, Predicate> predicate: predicates.entrySet()) {
+            if (predicate.getKey().contains(this.getClass().getSimpleName()) && !predicate.getValue().test(data)) {
                 return false;
             }
         }
